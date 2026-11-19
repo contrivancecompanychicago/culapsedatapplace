@@ -1,0 +1,90 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add Lake Survey{% endblock %}
+
+{% block content %}
+<h1>Add Lake Survey / Creel Data</h1>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="lake_name" class="form-label">Lake Name</label>
+                <select class="form-select" id="lake_name" name="lake_name" required>
+                    <option value="">Select Lake</option>
+                    <option value="Busse Lake">Busse Lake</option>
+                    <option value="Skokie Lagoons">Skokie Lagoons</option>
+                    <option value="Beck Lake">Beck Lake</option>
+                    <option value="Tampier Lake">Tampier Lake</option>
+                    <option value="Lake Opeka">Lake Opeka</option>
+                    <option value="Thorn Creek">Thorn Creek</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fishing_method" class="form-label">Fishing Method</label>
+                <select class="form-select" id="fishing_method" name="fishing_method">
+                    <option value="">Select Method</option>
+                    <option value="Bank Fishing">Bank Fishing</option>
+                    <option value="Boat Fishing">Boat Fishing</option>
+                    <option value="Wading">Wading</option>
+                    <option value="Fly Fishing">Fly Fishing</option>
+                    <option value="Ice Fishing">Ice Fishing</option>
+                    <option value="Observation Only">Observation Only</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fish_species" class="form-label">Fish Species Caught/Observed</label>
+                <input type="text" class="form-control" id="fish_species" name="fish_species" placeholder="Bass, Pike, Bluegill, etc.">
+            </div>
+            <div class="mb-3">
+                <label for="fish_count" class="form-label">Number of Fish</label>
+                <input type="number" class="form-control" id="fish_count" name="fish_count" min="0">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="fish_size_avg" class="form-label">Average Fish Size (inches)</label>
+                <input type="number" class="form-control" id="fish_size_avg" name="fish_size_avg" step="0.5" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="water_temperature" class="form-label">Water Temperature (°F)</label>
+                <input type="number" class="form-control" id="water_temperature" name="water_temperature" step="0.1">
+            </div>
+            <div class="mb-3">
+                <label for="water_clarity" class="form-label">Water Clarity</label>
+                <select class="form-select" id="water_clarity" name="water_clarity">
+                    <option value="">Select Clarity</option>
+                    <option value="Clear">Clear</option>
+                    <option value="Slightly Turbid">Slightly Turbid</option>
+                    <option value="Turbid">Turbid</option>
+                    <option value="Very Turbid">Very Turbid</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="frogs_observed" class="form-label">Frogs Observed</label>
+                <input type="text" class="form-control" id="frogs_observed" name="frogs_observed" placeholder="Species and quantity">
+            </div>
+            <div class="mb-3">
+                <label for="turtles_observed" class="form-label">Turtles Observed</label>
+                <input type="text" class="form-control" id="turtles_observed" name="turtles_observed" placeholder="Species and quantity">
+            </div>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="notes" class="form-label">Additional Notes</label>
+        <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Weather conditions, bait used, other observations..."></textarea>
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-warning">Save Survey</button>
+        <a href="{{ url_for('lakes') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}

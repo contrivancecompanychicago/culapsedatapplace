@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+
+{% block title %}Chicago River Observations{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="bi bi-water"></i> Chicago River Observations</h1>
+    <a href="{{ url_for('add_river') }}" class="btn btn-info">Add New Observation</a>
+</div>
+
+{% if entries %}
+    <div class="row">
+        {% for entry in entries|reverse %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry.location }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ entry.date }}</h6>
+                        <p class="card-text">
+                            <strong>Water Level:</strong> {{ entry.water_level }}<br>
+                            <strong>Clarity:</strong> {{ entry.water_clarity }}<br>
+                            {% if entry.temperature %}
+                                <strong>Temperature:</strong> {{ entry.temperature }}°F<br>
+                            {% endif %}
+                            <strong>Flow Rate:</strong> {{ entry.flow_rate }}
+                        </p>
+                        {% if entry.wildlife_observed %}
+                            <p class="card-text"><strong>Wildlife:</strong> {{ entry.wildlife_observed }}</p>
+                        {% endif %}
+                        {% if entry.pollution_indicators %}
+                            <p class="card-text"><strong>Pollution:</strong> {{ entry.pollution_indicators }}</p>
+                        {% endif %}
+                        {% if entry.notes %}
+                            <p class="card-text"><small>{{ entry.notes }}</small></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center">
+        <p class="lead">No river observations recorded yet.</p>
+        <a href="{{ url_for('add_river') }}" class="btn btn-info">Add Your First Observation</a>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add Weather Observation{% endblock %}
+
+{% block content %}
+<h1>Add Weather Observation</h1>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <select class="form-select" id="location" name="location" required>
+                    <option value="">Select Location</option>
+                    <option value="Chicago Downtown">Chicago Downtown</option>
+                    <option value="Chicago North Side">Chicago North Side</option>
+                    <option value="Chicago South Side">Chicago South Side</option>
+                    <option value="Evanston">Evanston</option>
+                    <option value="Oak Park">Oak Park</option>
+                    <option value="Schaumburg">Schaumburg</option>
+                    <option value="Palatine">Palatine</option>
+                    <option value="Other Cook County">Other Cook County</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="temperature" class="form-label">Temperature (°F)</label>
+                <input type="number" class="form-control" id="temperature" name="temperature" step="0.1" required>
+            </div>
+            <div class="mb-3">
+                <label for="humidity" class="form-label">Humidity (%)</label>
+                <input type="number" class="form-control" id="humidity" name="humidity" min="0" max="100" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="precipitation" class="form-label">Precipitation (inches)</label>
+                <input type="number" class="form-control" id="precipitation" name="precipitation" step="0.01" min="0" required>
+            </div>
+            <div class="mb-3">
+                <label for="wind_speed" class="form-label">Wind Speed (mph)</label>
+                <input type="number" class="form-control" id="wind_speed" name="wind_speed" step="0.1" min="0" required>
+            </div>
+            <div class="mb-3">
+                <label for="conditions" class="form-label">Weather Conditions</label>
+                <select class="form-select" id="conditions" name="conditions" required>
+                    <option value="">Select Conditions</option>
+                    <option value="Clear">Clear</option>
+                    <option value="Partly Cloudy">Partly Cloudy</option>
+                    <option value="Cloudy">Cloudy</option>
+                    <option value="Overcast">Overcast</option>
+                    <option value="Rain">Rain</option>
+                    <option value="Snow">Snow</option>
+                    <option value="Fog">Fog</option>
+                    <option value="Thunderstorm">Thunderstorm</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Save Entry</button>
+        <a href="{{ url_for('weather') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}

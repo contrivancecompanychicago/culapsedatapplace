@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+
+{% block title %}Plant Observations - Chicago Environmental Observations{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="bi bi-flower1"></i> Plant Observations</h1>
+    <a href="{{ url_for('add_plant') }}" class="btn btn-success">Add New Observation</a>
+</div>
+
+{% if entries %}
+    <div class="row">
+        {% for entry in entries|reverse %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry.common_name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ entry.species_name }}</h6>
+                        <p class="card-text">
+                            <strong>Location:</strong> {{ entry.preserve }}<br>
+                            <strong>Date:</strong> {{ entry.date }}<br>
+                            <strong>Abundance:</strong> {{ entry.abundance }}<br>
+                            <strong>Flowering:</strong> {{ entry.flowering_status }}<br>
+                            <strong>Habitat:</strong> {{ entry.habitat }}
+                        </p>
+                        {% if entry.notes %}
+                            <p class="card-text"><small>{{ entry.notes }}</small></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center">
+        <p class="lead">No plant observations recorded yet.</p>
+        <a href="{{ url_for('add_plant') }}" class="btn btn-success">Add Your First Observation</a>
+    </div>
+{% endif %}
+{% endblock %}

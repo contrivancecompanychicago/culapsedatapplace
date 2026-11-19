@@ -1,0 +1,88 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add Plant Observation{% endblock %}
+
+{% block content %}
+<h1>Add Plant Observation</h1>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="preserve" class="form-label">Forest Preserve</label>
+                <select class="form-select" id="preserve" name="preserve" required>
+                    <option value="">Select Preserve</option>
+                    <option value="Busse Woods">Busse Woods</option>
+                    <option value="Caldwell Woods">Caldwell Woods</option>
+                    <option value="LaBagh Woods">LaBagh Woods</option>
+                    <option value="North Park Village Nature Center">North Park Village Nature Center</option>
+                    <option value="Palos Forest Preserve">Palos Forest Preserve</option>
+                    <option value="Waterfall Glen">Waterfall Glen</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="species_name" class="form-label">Scientific Name</label>
+                <input type="text" class="form-control" id="species_name" name="species_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="common_name" class="form-label">Common Name</label>
+                <input type="text" class="form-control" id="common_name" name="common_name" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="location_details" class="form-label">Specific Location</label>
+                <input type="text" class="form-control" id="location_details" name="location_details" placeholder="Trail name, GPS coordinates, etc.">
+            </div>
+            <div class="mb-3">
+                <label for="abundance" class="form-label">Abundance</label>
+                <select class="form-select" id="abundance" name="abundance" required>
+                    <option value="">Select Abundance</option>
+                    <option value="Rare (1-5)">Rare (1-5)</option>
+                    <option value="Uncommon (6-25)">Uncommon (6-25)</option>
+                    <option value="Common (26-100)">Common (26-100)</option>
+                    <option value="Abundant (100+)">Abundant (100+)</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="flowering_status" class="form-label">Flowering Status</label>
+                <select class="form-select" id="flowering_status" name="flowering_status">
+                    <option value="">Select Status</option>
+                    <option value="Budding">Budding</option>
+                    <option value="Flowering">Flowering</option>
+                    <option value="Fruiting">Fruiting</option>
+                    <option value="Dormant">Dormant</option>
+                    <option value="N/A">N/A</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="habitat" class="form-label">Habitat</label>
+                <select class="form-select" id="habitat" name="habitat">
+                    <option value="">Select Habitat</option>
+                    <option value="Prairie">Prairie</option>
+                    <option value="Woodland">Woodland</option>
+                    <option value="Wetland">Wetland</option>
+                    <option value="Savanna">Savanna</option>
+                    <option value="Disturbed">Disturbed</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="notes" class="form-label">Notes</label>
+        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-success">Save Observation</button>
+        <a href="{{ url_for('plants') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}

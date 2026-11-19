@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+
+{% block title %}Lake Surveys & Creel Data{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="bi bi-droplet"></i> Lake Surveys & Creel Data</h1>
+    <a href="{{ url_for('add_lake') }}" class="btn btn-warning">Add New Survey</a>
+</div>
+
+{% if entries %}
+    <div class="row">
+        {% for entry in entries|reverse %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry.lake_name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ entry.date }}</h6>
+                        <p class="card-text">
+                            <strong>Fishing Method:</strong> {{ entry.fishing_method }}<br>
+                            <strong>Fish Species:</strong> {{ entry.fish_species }}<br>
+                            <strong>Fish Count:</strong> {{ entry.fish_count }}<br>
+                            {% if entry.fish_size_avg %}
+                                <strong>Avg Size:</strong> {{ entry.fish_size_avg }}"<br>
+                            {% endif %}
+                            <strong>Water Clarity:</strong> {{ entry.water_clarity }}
+                        </p>
+                        {% if entry.frogs_observed %}
+                            <p class="card-text"><strong>Frogs:</strong> {{ entry.frogs_observed }}</p>
+                        {% endif %}
+                        {% if entry.turtles_observed %}
+                            <p class="card-text"><strong>Turtles:</strong> {{ entry.turtles_observed }}</p>
+                        {% endif %}
+                        {% if entry.notes %}
+                            <p class="card-text"><small>{{ entry.notes }}</small></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center">
+        <p class="lead">No lake surveys recorded yet.</p>
+        <a href="{{ url_for('add_lake') }}" class="btn btn-warning">Add Your First Survey</a>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+
+{% extends "base.html" %}
+
+{% block title %}Animal Observations{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="bi bi-bug"></i> Animal Observations</h1>
+    <a href="{{ url_for('add_animal') }}" class="btn btn-dark">Add New Observation</a>
+</div>
+
+{% if entries %}
+    <div class="row">
+        {% for entry in entries|reverse %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry.common_name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ entry.species }}</h6>
+                        <p class="card-text">
+                            <strong>Location:</strong> {{ entry.location }}<br>
+                            <strong>Date:</strong> {{ entry.date }}<br>
+                            <strong>Number:</strong> {{ entry.number_observed }}<br>
+                            <strong>Time:</strong> {{ entry.time_of_day }}<br>
+                            <strong>Behavior:</strong> {{ entry.behavior }}
+                        </p>
+                        {% if entry.habitat %}
+                            <p class="card-text"><strong>Habitat:</strong> {{ entry.habitat }}</p>
+                        {% endif %}
+                        {% if entry.notes %}
+                            <p class="card-text"><small>{{ entry.notes }}</small></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center">
+        <p class="lead">No animal observations recorded yet.</p>
+        <a href="{{ url_for('add_animal') }}" class="btn btn-dark">Add Your First Observation</a>
+    </div>
+{% endif %}
+{% endblock %}

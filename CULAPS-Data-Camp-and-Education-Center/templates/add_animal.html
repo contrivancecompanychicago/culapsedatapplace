@@ -1,0 +1,91 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add Animal Observation{% endblock %}
+
+{% block content %}
+<h1>Add Animal Observation</h1>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" required placeholder="Specific location in Cook County">
+            </div>
+            <div class="mb-3">
+                <label for="species" class="form-label">Scientific Name</label>
+                <input type="text" class="form-control" id="species" name="species" placeholder="Genus species">
+            </div>
+            <div class="mb-3">
+                <label for="common_name" class="form-label">Common Name</label>
+                <input type="text" class="form-control" id="common_name" name="common_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="number_observed" class="form-label">Number Observed</label>
+                <input type="number" class="form-control" id="number_observed" name="number_observed" min="1" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="time_of_day" class="form-label">Time of Day</label>
+                <select class="form-select" id="time_of_day" name="time_of_day" required>
+                    <option value="">Select Time</option>
+                    <option value="Dawn">Dawn</option>
+                    <option value="Morning">Morning</option>
+                    <option value="Midday">Midday</option>
+                    <option value="Afternoon">Afternoon</option>
+                    <option value="Dusk">Dusk</option>
+                    <option value="Night">Night</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="behavior" class="form-label">Behavior</label>
+                <select class="form-select" id="behavior" name="behavior">
+                    <option value="">Select Behavior</option>
+                    <option value="Feeding">Feeding</option>
+                    <option value="Resting">Resting</option>
+                    <option value="Moving">Moving</option>
+                    <option value="Territorial">Territorial</option>
+                    <option value="Mating">Mating</option>
+                    <option value="Nesting">Nesting</option>
+                    <option value="Alert">Alert</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="habitat" class="form-label">Habitat</label>
+                <select class="form-select" id="habitat" name="habitat">
+                    <option value="">Select Habitat</option>
+                    <option value="Urban">Urban</option>
+                    <option value="Suburban">Suburban</option>
+                    <option value="Forest">Forest</option>
+                    <option value="Prairie">Prairie</option>
+                    <option value="Wetland">Wetland</option>
+                    <option value="River/Stream">River/Stream</option>
+                    <option value="Lake/Pond">Lake/Pond</option>
+                    <option value="Park">Park</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="weather_conditions" class="form-label">Weather Conditions</label>
+                <input type="text" class="form-control" id="weather_conditions" name="weather_conditions" placeholder="Sunny, rainy, cloudy, etc.">
+            </div>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="notes" class="form-label">Additional Notes</label>
+        <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Physical description, markings, size, other observations..."></textarea>
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-dark">Save Observation</button>
+        <a href="{{ url_for('animals') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}

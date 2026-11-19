@@ -1,0 +1,61 @@
+Since you are transitioning your project to use the **River Bend Family Picnic Area** and its specific urban stressors (Pace bus stops, mall traffic, and O'Hare noise), your README needs to document these custom variables.
+
+This file will serve as the "instruction manual" for the CULAPS app, ensuring that when you or your mentors (Brown, Ferguson, or Miranda) run the simulation, it correctly interprets your Schiller Woods data.
+
+### README.md: The Sodium Trap Project (BIOS 399)
+
+#### **1. Project Overview**
+
+This application models the "Behavioral Trap" created by urban road salt (NaCl) at Schiller Woods. It uses **Giving-Up Density (GUD)** to calculate the point where a squirrel's physiological drive for sodium () overrides its evolutionary fear of predation ().
+
+#### **2. Custom Site Variables**
+
+To align the app with the **River Bend / Pace Bus Stop** location, the following parameters must be updated in the `config.py` or the app's input fields:
+
+* **`site_type`**:
+* `Control`: Robinson Homestead (Low , High Visibility).
+* `Experimental`: River Bend Picnic Area (High , Low Visibility).
+
+
+* **`mask_a` (Acoustic Masking)**:
+* Set to a scale of 1–5.
+* *Note:* River Bend should be set to **5** due to O'Hare flight paths and Lawrence Ave/River Rd truck traffic.
+
+
+* **`vis_score` (Visibility)**:
+* Based on "Squirrel Eye Level" (1–5).
+* *Note:* Account for "Biological Misinformation" caused by the dense shrubs near the River Bend site.
+
+
+
+#### **3. The Mathematical Model**
+
+The app solves for the Quitting Harvest Rate () using:
+
+
+* ** (Sodium Multiplier):** A value  that reduces the perceived state cost, simulating how salt-stress makes a squirrel "bolder."
+* ** (Uncertainty):** Influenced by the `mask_a` variable; high noise increases the error margin in the squirrel's predator detection.
+
+#### **4. Updated Data Entry Protocol**
+
+When updating the app's database (`data.csv`), ensure the following columns are present:
+
+1. **`dist_to_road`**: Distance (meters) to River Road (proxy for salt concentration).
+2. **`transit_active`**: Boolean (True/False) if a Pace Bus was idling during the 30-second scan.
+3. **`predator_cues`**: Count of  (dogs/humans) and  (alarm calls).
+
+#### **5. Technical Requirements**
+
+* **Backend:** Python 3.x
+* **Libraries:** `pandas` for data management, `matplotlib` for GUD curve fitting.
+* **Hardware:** Compatible with **TI-84 Plus CE Python** for field-side calculations and **Google Colab** for large-scale Delta () Analysis.
+
+---
+
+### **How to use this today:**
+
+1. **Open the Replit:** Go to the `README.md` file in the project sidebar.
+2. **Paste the text above:** This ensures that your app's documentation matches your actual field sites.
+3. **Update the 'Sites' Dictionary:** If the app has a `sites.py` file, make sure the coordinates for **River Bend [41.9515, -87.8430]** are added so the mapping function works correctly.
+
+**Would you like me to help you write the specific Python code for the "Sodium Multiplier" () to put into the app's logic?**

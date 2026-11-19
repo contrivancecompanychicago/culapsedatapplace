@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add River Observation{% endblock %}
+
+{% block content %}
+<h1>Add Chicago River Observation</h1>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <select class="form-select" id="location" name="location" required>
+                    <option value="">Select Location</option>
+                    <option value="Chicago River Downtown">Chicago River Downtown</option>
+                    <option value="North Branch">North Branch</option>
+                    <option value="South Branch">South Branch</option>
+                    <option value="Chicago Riverwalk">Chicago Riverwalk</option>
+                    <option value="North Park Village">North Park Village</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="water_level" class="form-label">Water Level</label>
+                <select class="form-select" id="water_level" name="water_level" required>
+                    <option value="">Select Level</option>
+                    <option value="Low">Low</option>
+                    <option value="Normal">Normal</option>
+                    <option value="High">High</option>
+                    <option value="Flood Stage">Flood Stage</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="water_clarity" class="form-label">Water Clarity</label>
+                <select class="form-select" id="water_clarity" name="water_clarity" required>
+                    <option value="">Select Clarity</option>
+                    <option value="Clear">Clear</option>
+                    <option value="Slightly Turbid">Slightly Turbid</option>
+                    <option value="Turbid">Turbid</option>
+                    <option value="Very Turbid">Very Turbid</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="temperature" class="form-label">Water Temperature (°F)</label>
+                <input type="number" class="form-control" id="temperature" name="temperature" step="0.1">
+            </div>
+            <div class="mb-3">
+                <label for="flow_rate" class="form-label">Flow Rate</label>
+                <select class="form-select" id="flow_rate" name="flow_rate" required>
+                    <option value="">Select Flow Rate</option>
+                    <option value="Slow">Slow</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Fast">Fast</option>
+                    <option value="Very Fast">Very Fast</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="wildlife_observed" class="form-label">Wildlife Observed</label>
+                <textarea class="form-control" id="wildlife_observed" name="wildlife_observed" rows="2" placeholder="Birds, fish, mammals, etc."></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="pollution_indicators" class="form-label">Pollution Indicators</label>
+                <textarea class="form-control" id="pollution_indicators" name="pollution_indicators" rows="2" placeholder="Algae blooms, debris, odors, etc."></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="notes" class="form-label">Additional Notes</label>
+        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-info">Save Observation</button>
+        <a href="{{ url_for('river') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}

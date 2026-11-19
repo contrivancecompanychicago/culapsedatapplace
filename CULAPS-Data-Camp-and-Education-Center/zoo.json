@@ -1,0 +1,35 @@
+{
+  "ant": {
+    "strategies": ["stalking", "chasing"],
+    "payoffs": {
+      "stalking": {
+        "biting": "turtle is bitten",
+        "flying": "turtle escapes"
+      },
+      "chasing": {
+        "biting": "ant gets no food",
+        "flying": "ant gets no food"
+      }
+    }
+  },
+  "mosquito": {
+    "strategies": ["biting", "flying"],
+    "payoffs": {
+      "biting": "ant gets food",
+      "flying": "turtle escapes"
+    }
+  },
+  "turtle": {
+    "strategies": ["hiding", "running"],
+    "payoffs": {
+      "hiding": {
+        "biting": "turtle is bitten",
+        "flying": "turtle escapes"
+      },
+      "running": {
+        "biting": "turtle escapes",
+        "flying": "turtle is bitten"
+      }
+    }
+  }
+}
