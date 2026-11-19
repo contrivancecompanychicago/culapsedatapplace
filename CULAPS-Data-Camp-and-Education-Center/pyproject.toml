@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-template"
+name = "culapsedatapplace"
 version = "0.0.0"
 description = ""
 authors = ["Eric Hilary Smith <erichilarysmithsr@gmail.com>"]
